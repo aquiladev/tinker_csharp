@@ -11,15 +11,15 @@ namespace TinkerSrc
         public void Run(string[] args)
         {
             var environmentType = ShareLib.DetermineEnvironmentType(args);
-            
+
             ShareLib.PrintHeader();
-            
+
             var bunq = new BunqLib(environmentType);
 
             var amount = ShareLib.GetAmountFromArgsOrStdIn(args);
             var recipient = ShareLib.GetRecipientFromArgsOrStdIn(args);
             var description = ShareLib.GetDescriptionFromArgsOrStdIn(args);
-            
+
             Console.Out.WriteLine();
             Console.Out.WriteLine($"  | Sending:      € {amount}");
             Console.Out.WriteLine($"  | To:           {recipient}");
@@ -29,7 +29,7 @@ namespace TinkerSrc
             Console.Out.WriteLine();
 
             Payment.Create(new Amount(amount, "EUR"), new Pointer("EMAIL", recipient), description);
-            
+
             Console.Out.WriteLine();
             Console.Out.WriteLine("  | Payment sent");
             Console.Out.WriteLine();

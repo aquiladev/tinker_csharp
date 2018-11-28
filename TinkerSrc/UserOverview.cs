@@ -9,9 +9,9 @@ namespace TinkerSrc
         public void Run(string[] args)
         {
             var environmentType = ShareLib.DetermineEnvironmentType(args);
-            
+
             ShareLib.PrintHeader();
-            
+
             var bunq = new BunqLib(environmentType);
 
             ShareLib.PrintUser(BunqContext.UserContext.UserId, bunq.GetCurrentUserDisplayName());

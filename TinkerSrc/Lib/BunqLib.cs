@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Text.RegularExpressions;
 using System.Threading;
 using Bunq.Sdk.Context;
 using Bunq.Sdk.Exception;
@@ -123,7 +122,7 @@ namespace TinkerSrc.Lib
             {
                 return BunqContext.UserContext.UserPerson.DisplayName;
             }
-            else if (BunqContext.UserContext.isOnlyUserCompanySet())
+            else if (BunqContext.UserContext.IsOnlyUserCompanySet())
             {
                 return BunqContext.UserContext.UserCompany.DisplayName;
             }
@@ -135,7 +134,7 @@ namespace TinkerSrc.Lib
 
         public List<MonetaryAccountBank> GetAllMonetaryAccountBankActive(int count = 10)
         {
-            var pagination = new Pagination {Count = count};
+            var pagination = new Pagination { Count = count };
 
             var allMonetaryAccountBank = MonetaryAccountBank.List(pagination.UrlParamsCountOnly).Value;
             var allMonetaryAccountBankActive = new List<MonetaryAccountBank>();
@@ -171,21 +170,21 @@ namespace TinkerSrc.Lib
 
         public List<Payment> GetAllPayment(int count = 10)
         {
-            var pagination = new Pagination {Count = count};
+            var pagination = new Pagination { Count = count };
 
             return Payment.List(urlParams: pagination.UrlParamsCountOnly).Value;
         }
 
         public List<RequestInquiry> GetAllRequest(int count = 10)
         {
-            var pagination = new Pagination {Count = count};
+            var pagination = new Pagination { Count = count };
 
             return RequestInquiry.List(urlParams: pagination.UrlParamsCountOnly).Value;
         }
 
         public List<Card> GetAllCard(int count = 10)
         {
-            var pagination = new Pagination {Count = count};
+            var pagination = new Pagination { Count = count };
 
             return Card.List(pagination.UrlParamsCountOnly).Value;
         }
@@ -201,7 +200,7 @@ namespace TinkerSrc.Lib
 
         public List<Pointer> GetAllUserAlias()
         {
-            if (BunqContext.UserContext.isOnlyUserCompanySet())
+            if (BunqContext.UserContext.IsOnlyUserCompanySet())
             {
                 return BunqContext.UserContext.UserCompany.Alias;
             }

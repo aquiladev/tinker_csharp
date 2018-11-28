@@ -14,20 +14,20 @@ namespace TinkerSrc
         public void Run(string[] args)
         {
             var environmentType = ShareLib.DetermineEnvironmentType(args);
-            
+
             ShareLib.PrintHeader();
-            
+
             var bunq = new BunqLib(environmentType);
 
             var callbackUrl = ShareLib.GetCallbackUrlFromArgsOrStdIn(args);
-            
+
             Console.Out.WriteLine();
             Console.Out.WriteLine($"  | Adding Callback URL:    {callbackUrl}");
             Console.Out.WriteLine();
             Console.Out.WriteLine("    ...");
             Console.Out.WriteLine();
 
-            if (BunqContext.UserContext.isOnlyUserCompanySet())
+            if (BunqContext.UserContext.IsOnlyUserApiKeySet())
             {
                 UserCompany.Update(
                     notificationFilters: UpdateAllNotificationFilter(
@@ -49,7 +49,7 @@ namespace TinkerSrc
             {
                 throw new BunqException("Unexpected user type found.");
             }
-            
+
             Console.Out.WriteLine();
             Console.Out.WriteLine("  | Callback URL added");
             Console.Out.WriteLine();
@@ -74,7 +74,7 @@ namespace TinkerSrc
                     allNotificationFilterUpdated.Add(notificationFilter);
                 }
             }
-            
+
             allNotificationFilterUpdated.Add(new NotificationFilter("URL", callbackUrl, "MUTATION"));
 
             return allNotificationFilterUpdated;

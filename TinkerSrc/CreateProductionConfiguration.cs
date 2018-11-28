@@ -1,7 +1,6 @@
 ﻿using System;
 using Bunq.Sdk.Context;
 using Bunq.Sdk.Exception;
-using Bunq.Sdk.Http;
 using Mono.Options;
 using Tinker.Utils;
 
@@ -12,7 +11,7 @@ namespace TinkerSrc
         public void Run(string[] args)
         {
             string apiKey = null;
-            
+
             new OptionSet
             {
                 {"api-key=", v => apiKey = v }

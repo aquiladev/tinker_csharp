@@ -10,14 +10,14 @@ namespace TinkerSrc
         public void Run(string[] args)
         {
             var environmentType = ShareLib.DetermineEnvironmentType(args);
-            
+
             ShareLib.PrintHeader();
-            
+
             var bunq = new BunqLib(environmentType);
 
             var accountId = ShareLib.GetAccountIdFromArgsOrStdIn(args);
             var name = ShareLib.GetNameFromArgsOrStdIn(args);
-            
+
             Console.Out.WriteLine();
             Console.Out.WriteLine($"  | Updating Name:      {name}");
             Console.Out.WriteLine($"  | of Account:         {accountId}");
@@ -26,7 +26,7 @@ namespace TinkerSrc
             Console.Out.WriteLine();
 
             MonetaryAccountBank.Update(int.Parse(accountId), name);
-            
+
             Console.Out.WriteLine();
             Console.Out.WriteLine("  | Account updated");
             Console.Out.WriteLine();

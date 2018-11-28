@@ -10,14 +10,14 @@ namespace TinkerSrc
         public void Run(string[] args)
         {
             var environmentType = ShareLib.DetermineEnvironmentType(args);
-            
+
             ShareLib.PrintHeader();
-            
+
             var bunq = new BunqLib(environmentType);
 
             var cardId = ShareLib.GetCardIdFromArgsOrStdIn(args);
             var accountId = ShareLib.GetAccountIdFromArgsOrStdIn(args);
-            
+
             Console.Out.WriteLine();
             Console.Out.WriteLine($"  | Link Card:    {cardId}");
             Console.Out.WriteLine($"  | To Account:   {accountId}");
@@ -25,8 +25,8 @@ namespace TinkerSrc
             Console.Out.WriteLine("    ...");
             Console.Out.WriteLine();
 
-            Card.Update(int.Parse(cardId), monetaryAccountCurrentId: int.Parse(accountId));
-            
+            Card.Update(int.Parse(cardId), monetaryAccountIdFallback: int.Parse(accountId));
+
             Console.Out.WriteLine();
             Console.Out.WriteLine("  | Account switched");
             Console.Out.WriteLine();

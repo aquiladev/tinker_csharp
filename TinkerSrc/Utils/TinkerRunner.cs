@@ -11,6 +11,8 @@ namespace Tinker.Utils
         {
             if (args.Length <= 0) return;
 
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+
             var tinkerClassName = Path.GetFileNameWithoutExtension(args[0]);
             var tinkerInstance = (ITinker) MagicallyCreateInstance(tinkerClassName);
             tinkerInstance.Run(args);

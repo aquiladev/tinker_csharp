@@ -11,15 +11,15 @@ namespace TinkerSrc
         public void Run(string[] args)
         {
             var environmentType = ShareLib.DetermineEnvironmentType(args);
-            
+
             ShareLib.PrintHeader();
-            
+
             var bunq = new BunqLib(environmentType);
 
             var amount = ShareLib.GetAmountFromArgsOrStdIn(args);
             var recipient = ShareLib.GetRecipientFromArgsOrStdIn(args);
             var description = ShareLib.GetDescriptionFromArgsOrStdIn(args);
-            
+
             Console.Out.WriteLine();
             Console.Out.WriteLine($"  | Requesting:   € {amount}");
             Console.Out.WriteLine($"  | From:         {recipient}");
@@ -29,7 +29,7 @@ namespace TinkerSrc
             Console.Out.WriteLine();
 
             RequestInquiry.Create(new Amount(amount, "EUR"), new Pointer("EMAIL", recipient), description, true);
-            
+
             Console.Out.WriteLine();
             Console.Out.WriteLine("  | Request sent");
             Console.Out.WriteLine();
